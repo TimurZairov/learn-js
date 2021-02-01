@@ -1,12 +1,17 @@
 let money = 600;
-let income = 200;
-let addExpenses = 300;
-const deposit = 800;
-let mission, period;
+console.log(money);
+let income = 600;
+console.log(income);
+let addExpenses = 'Обед, Метро, Интернет';
+console.log(addExpenses.length);
+console.log(addExpenses.split(','));
+console.log(addExpenses.toLowerCase());
+const deposit = true;
+console.log(deposit);
+let mission = 5000;
+console.log('Цуль заработать' + ' ' + (mission) + ' ' + 'долларов');
+const period = 5;
+console.log('Период равен' + ' ' + (period)+ ' ' + 'месяцев');
 
-mission = 'Накопить 5000$';
-period = 'За 4 месяца';
-
-alert('Изучение java script');
-
-console.log('Тяжело в ученье легко в бою');
+let budgetDay = (income)/30;
+console.log(budgetDay);
