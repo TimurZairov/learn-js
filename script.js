@@ -45,7 +45,6 @@ const budgetDay = Math.trunc((getAccumulatedMonth) / 30);
 
 //Статус заработка
 let getStatusIncome = function(){
-    console.log(typeof(budgetDay));
     if (budgetDay >= 1200){
         return ('У вас высокий уровень дохода');
     } else if (budgetDay > 600 || budgetDay < 1200) {
@@ -56,7 +55,7 @@ let getStatusIncome = function(){
         return ('Что то пошло не так');
     }
 };
-console.log(getStatusIncome());
+
 
 //консоль
 console.log (arrExpenses);
@@ -64,4 +63,5 @@ console.log(`Ваш расход за месяц ${getExpensesMonth}`);
 console.log(`Ваш месячный остаток ${getAccumulatedMonth}`);
 console.log(`Ваш суточный бюджет ${budgetDay}`);
 console.log(`Цель достигнута ${getTargetMonth()}`);
+console.log(getStatusIncome());
 
