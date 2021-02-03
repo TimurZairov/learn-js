@@ -41,13 +41,11 @@ const getTargetMonth = function(){
 getTargetMonth();
 
 //Дневной бюджет
-const budgetDay = function(){
-    return Math.trunc((getAccumulatedMonth) / 30);
-};
-budgetDay();
+const budgetDay = Math.trunc((getAccumulatedMonth) / 30);
 
 //Статус заработка
 let getStatusIncome = function(){
+    console.log(typeof(budgetDay));
     if (budgetDay >= 1200){
         return ('У вас высокий уровень дохода');
     } else if (budgetDay > 600 || budgetDay < 1200) {
@@ -64,6 +62,6 @@ console.log(getStatusIncome());
 console.log (arrExpenses);
 console.log(`Ваш расход за месяц ${getExpensesMonth}`);
 console.log(`Ваш месячный остаток ${getAccumulatedMonth}`);
-console.log(`Ваш суточный бюджет ${budgetDay()}`);
+console.log(`Ваш суточный бюджет ${budgetDay}`);
 console.log(`Цель достигнута ${getTargetMonth()}`);
 
