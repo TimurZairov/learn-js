@@ -1,10 +1,5 @@
 'use strict';
 let  money;
-let addExpenses;
-let deposit;
-let expenses, expenses2;
-let expensesAmount;
-let accumulatedMonth;
 
 let start = function(){
     money = prompt('Ваш месячный доход');
@@ -55,30 +50,34 @@ let appData = {
     },
 
     
-    //месячный остаток
-    getAccumulatedMonth: function(){
-        return  money - expensesAmount;
+    //месячный остаток и дневной бюджет
+    getBudget: function(){
+        for(let key in appData){
+        appData.budgetMonth =  money - appData.expensesMonth;
+        appData.budgetDay = parseInt(appData.budgetMonth/ 30);
+        };
     },
+   
 
     //Цель мисси
     getTargetMonth: function(){
-
-        let sum =Math.ceil(appData.mission/ appData.getAccumulatedMonth());
-
-        if (sum < 0){
+        for( let key in appData){
+            appData.period =Math.ceil(appData.mission/ appData.budgetMonth);
+        }
+        if (appData.period < 0){
             return 'Цель не будет достигнута';
         } else {
-            return 'Цель будет достигнута';
+            return `Цель будет достигнута  за ${appData.period}`;
         }
     },
 
     //Статус заработка
     getStatusIncome: function(){
-        if (budgetDay >= 1200){
+        if (appData.budgetDay >= 1200){
             return ('У вас высокий уровень дохода');
-        } else if (budgetDay >= 600 || budgetDay < 1200) {
+        } else if (appData.budgetDay >= 600 || appData.budgetDay < 1200) {
             return ('У вас средний уровень дохода');
-        } else if (budgetDay > 0 || budgetDay < 600) {
+        } else if (appData.budgetDay > 0 || appData.budgetDay < 600) {
             return ('К сожалению у вас уровень дохода ниже среднего');
         } else {
             return ('Что то пошло не так');
@@ -88,21 +87,20 @@ let appData = {
 };
 console.log (appData);
 
-let showTypeOf = function(data){
-    console.log(data, typeof(data));
-};
 
 appData.asking();
-expensesAmount = appData.getExpensesMonth();
-accumulatedMonth = appData.getAccumulatedMonth();
-const budgetDay = Math.trunc(accumulatedMonth / 30);
+appData.getExpensesMonth();
+appData.getBudget();
+
 
 
 //консоль
-console.log (appData.addExpenses);
-console.log(`Ваш расход за месяц ${expensesAmount}`);
-console.log(`Ваш месячный остаток ${accumulatedMonth}`);
-console.log(`Ваш суточный бюджет ${budgetDay}`);
-console.log(`${appData.getTargetMonth()}`);
+console.log(`Ваш расход за месяц ${appData.expensesMonth}`);
+console.log(appData.getTargetMonth());
 console.log(appData.getStatusIncome());
+
+
+for(let key in appData) {
+    console.log ('Наша программа включает в себя данные:' + key + appData[key]);
+};
 
