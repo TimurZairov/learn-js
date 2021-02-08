@@ -50,10 +50,8 @@ let appData = {
         //месячный расход с циклом
     getExpensesMonth: function (){
         for (let key in appData.expenses){
-            appData.expenses[key] + appData.expenses[key];
-            return appData.expenses[key];
+            appData.expensesMonth = appData.expensesMonth + appData.expenses[key];
         }
-            
     },
 
     
