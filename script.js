@@ -44,17 +44,21 @@ let appData = {
 
     // Возможные расходы    
       let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'квартира, обед').split(',');
-      appData.addExpenses = addExpenses.map(
+
+          appData.addExpenses = addExpenses.map(
           (item) => item.trim().charAt(0).toUpperCase() + item.slice(1).toLowerCase()
       );
       //appData.addExpenses = expensesArray;
       let sum = 0;
       for (let i = 0; i < 2; i++) {
       let expenses1 =prompt('Введите обязательную статью расходов'); 
+      while(!isNaN(expenses1) || expenses1.trim() === '' || expenses1 === null){
+        expenses1 =prompt('Введите обязательную статью расходов'); 
+      }
          do{
               sum = +prompt('Во сколько это обойдется');    
          } while (
-             sum === NaN || sum === '' || sum === null
+             isNaN(sum) || sum === '' || sum === null
          );
          appData.expenses[expenses1] = sum;
       };
@@ -106,7 +110,7 @@ let appData = {
         if(appData.deposit = confirm('Есть ли у вас депозит в банке?')){
             appData.percentDeposit = prompt('Какой годовой процент?');
 
-            while (!isNaN(appData.percentDeposit) || appData.percentDeposit.trim() === '' || appData.percentDeposit === null){
+            while (isNaN(appData.percentDeposit) || appData.percentDeposit.trim() === '' || appData.percentDeposit === null){
                 appData.percentDeposit = prompt('Какой годовой процент?');
             }
 
