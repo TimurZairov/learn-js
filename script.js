@@ -1,15 +1,32 @@
 'use strict';
 let  money;
+const startCalc = document.getElementById('start'); // расчет
+const plusButtonOne = document.getElementsByTagName('button')[0]; // кнопка плюс 1я
+const plusButtonTwo = document.getElementsByTagName('button')[1]; // кнопка плюс 2я
+const depositCheck = document.querySelector('#deposit-check'); // чекбокс
+const additionalIncomeItem = document.querySelectorAll('.additional_income-item'); // возможные доходы
+const resultTotal = document.getElementsByClassName('result-total'); // доход за месяц, дневной бюджет,
+// расход за месяц, возможные доходы, возможные расходы, накполения за период, срок достижения в месяцах
+const salaryAmount = document.querySelector('.salary-amount'); // месячный доход
+const incomeTitle = document.querySelector('[placeholder="Наименование"'); // доп доход наименование
+const incomeAmount = document.querySelector('.income-amount'); // доп доход сумма
+const expensesTitle = document.querySelector('input.expenses-title'); // обязательнык расходы,наименование
+const expensesAmount = document.querySelector('.expenses-amount'); // обязательные расходы, сумма
+const additionalExpensesItem = document.querySelector('.additional_expenses-item'); // Возможные расходы
+const targetAmount = document.querySelector('.target-amount'); //Цель, сумма
+const range = document.querySelector('.period-select'); // период расчета
+
+console.log(expensesTitle);
 
 let start = function(){
     money = prompt('Ваш месячный доход', 60000);
  
         while (isNaN(money) || money.trim() === '' || money === null){
             money = prompt('Ваш месячный доход');
-        }
+        }Button = document.getElementsByTagName()
         return money;
 };
-start();
+//start();
 
 let appData = {
     budget: money,
@@ -128,7 +145,7 @@ let appData = {
     }
 
 };
-
+/*
 appData.asking();
 appData.getExpensesMonth();
 appData.getBudget();
