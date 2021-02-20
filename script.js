@@ -47,6 +47,7 @@ let appData = {
             return;
         }
     },
+    
     //функция старт
     start: function(){
 
@@ -221,6 +222,7 @@ incomePlus.addEventListener('click', appData.addIncomeBlock);
 periodSelect.addEventListener('input', function(){
     periodAmount.innerHTML = periodSelect.value;
 });
+check();
 
 
 
