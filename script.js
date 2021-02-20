@@ -41,21 +41,29 @@ let appData = {
     budgetDay: 0,
     budgetMonth: 0,
     expensesMonth: 0,
+    check: function(){
+        if(salaryAmount.value === ''){
+            startCalc.disabled = true;
+            return;
+        }
+    },
     //функция старт
     start: function(){
+
+
         /*if(salaryAmount.value === ''){
             alert('Ошибка, поле "Месячный доход" должно быть заполнено!');
             return;
         }*/
         
-        salaryAmount.addEventListener('input', function(){
-            if (salaryAmount.value === null && salaryAmount.value === ''){
-                startCalc.disabled = false;
+       /* salaryAmount.addEventListener('input', function(){
+            if (salaryAmount.value === ''){
+                startCalc.disabled = true;
                 alert('Поле "Месячный доход" должно быть заполненым!')
             }else{
-                startCalc.disabled = true;
+                startCalc.disabled = false;
             }
-        });
+        });*/
         appData.budget = +salaryAmount.value;
         
         //вызов функций 
@@ -206,6 +214,7 @@ let appData = {
 
 };
 //addeventliste
+
 startCalc.addEventListener('click', appData.start);
 expensesPlus.addEventListener('click', appData.addExpdnsesBlock);
 incomePlus.addEventListener('click', appData.addIncomeBlock);
