@@ -27,7 +27,8 @@ const btnCancel = document.querySelector('#cancel'); // кнопка ресет
 const tagInputs = document.querySelectorAll('input');
 
 //console.log(startCalc);
-
+const incomeTitles = document.querySelectorAll('.income-title');
+const incomeAmounts = document.querySelectorAll('.income-amount');
 
 
 let appData = {
@@ -88,7 +89,7 @@ let appData = {
     addIncomeBlock: function(){
         let cloneIncomeItem = incomeItems[0].cloneNode(true);
         incomeItems[0].parentNode.insertBefore(cloneIncomeItem, incomePlus);
-        incomeItems = document.querySelectorAll('.income-items');
+        incomeItems = document.querySelectorAll('.income-items');        
         if(incomeItems.length === 3){
             incomePlus.style.display = 'none';
         }
@@ -206,7 +207,7 @@ startCalc.addEventListener('click', appData.start.bind(appData));
 startCalc.addEventListener('click', function(event){
     // перебор всех элементов и их блокировка в диве дата input-ов
     let newArr = Array.from(dataBlock);
-    newArr.splice(41, 4);
+    newArr.splice(42, 3);
     for( let i = 0; i < newArr.length; i++){
         newArr[i].disabled = true;
     };
@@ -231,10 +232,21 @@ btnCancel.addEventListener('click', function(event){
         for( let i = 0; i < dataBlock.length; i++){
             dataBlock[i].disabled = false;
         }
+
+
     });
+    incomeItems = document.querySelectorAll('.income-items');
+    for ( let i = 1; i < incomeItems.length; i++){
+        incomeItems[i].remove();
+        incomePlus.style.display = 'block';
+    }
+    expensesItems = document.querySelectorAll('.expenses-items');
+    for ( let i = 1; i < expensesItems.length; i++){
+        expensesItems[i].remove();
+        expensesPlus.style.display = 'block';
+    }
     startCalc.style.display = 'block';
     btnCancel.style.display = 'none';
-
 });
 expensesPlus.addEventListener('click', appData.addExpdnsesBlock);
 incomePlus.addEventListener('click', appData.addIncomeBlock);
@@ -252,9 +264,9 @@ salaryAmount.addEventListener('input', function(e){
 
 
 
+
+
 /*
-
-
 //консоль
 console.log(`Ваш расход за месяц ${appData.expensesMonth}`);
 console.log(appData.getTargetMonth());
@@ -262,6 +274,6 @@ console.log(appData.getStatusIncome());
 console.log (appData.addExpenses);
 
 
-/*for(let key in appData) {
+for(let key in appData) {
     console.log ('Наша программа включает в себя данные:' + key + appData[key]);
-};*/
+}*/
